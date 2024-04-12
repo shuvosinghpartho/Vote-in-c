@@ -66,8 +66,8 @@ int main() {
     return 0;
 }
 
-// For simplicity, assume admin login is successful without checking credentials
-// if we want then we can add login section bt ata dorkar nei pera hin thak
+// For simplicity, assume admin login is successful without checking credentials.
+// if we want then we can add login section.
 
 void adminLogin() {
     printf("Admin logged in successfully.\n");
@@ -153,7 +153,7 @@ void countTotalVotes() {
 }
 
 // Algorithm Part
-// Algorithm chara sort kora possible na maybe. Ei sorting part ta bubble sort algorithm e porse
+// Bubble sort 
 
 void sortCandidates() {
     for (int i = 0; i < num_candidates - 1; i++) {
@@ -165,6 +165,23 @@ void sortCandidates() {
             }
         }
     }
+
+/*// Selection Sort
+
+void sortCandidates() {
+    int maxIdx;
+        Candidate temp;
+            for (int i = 0; i < num_candidates - 1; i++) {
+                maxIdx = i;
+                    for(int j = i + 1; j < num_candidates; j++) {
+                        if (candidates[j].votes > candidates[maxIdx].votes) {
+                    maxIdx = j;
+                }
+            }
+        temp = candidates[maxIdx];
+    candidates[maxIdx] = candidates[i];
+candidates[i] = temp;
+}*/
 
     printf("\nCandidates sorted based on votes:\n");
     for (int i = 0; i < num_candidates; i++) {
