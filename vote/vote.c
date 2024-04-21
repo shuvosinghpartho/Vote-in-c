@@ -2,6 +2,8 @@
 // https://github.com/shuvosinghpartho
 // Voting System
 
+// Header Files and Global Variables
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,6 +16,13 @@ int maxSignLength = 20;
 int num_candidates = 0;
 int num_users = 0;
 
+/*This section includes necessary header files and defines global variables.
+maxCandidates, maxUsers, maxNameLength, and maxSignLength define the maximum number of candidates, users, and lengths for name and sign.
+num_candidates and num_users keep track of the current number of candidates and users.*/
+
+
+//Structures 
+
 typedef struct{
     char name[50];
     char sign[20];
@@ -25,6 +34,13 @@ typedef struct {
     int votes_given;
 } User;
 
+/*Defines two structures: Candidate and User.
+Candidate contains name, sign, and votes (number of votes received).
+User contains username and votes_given (number of votes the user has given).*/
+
+
+// Function Prototypes
+
 void adminLogin();
 void userLogin();
 void addCandidate();
@@ -33,9 +49,12 @@ void viewTotalVotes(User user);
 void countTotalVotes();
 void sortCandidates();
 
+/*These are function prototypes. Each function's purpose will be explained in detail when we get to its implementation.*/
 
 Candidate candidates[10];
 User users[10];
+
+// Main Function 
 
 int main() {
     int choice;
@@ -65,6 +84,11 @@ int main() {
 
     return 0;
 }
+/*This is the main function where the program starts execution.
+It presents a simple menu for admin and user login or exiting the program.
+The program runs in an infinite loop until the user chooses to exit.*/
+
+// Admin Login Function
 
 // For simplicity, assume admin login is successful without checking credentials.
 // if we want then we can add login section.
@@ -75,6 +99,10 @@ void adminLogin() {
     countTotalVotes();
     sortCandidates();
 }
+/*Simulated admin login (without credentials).
+Calls functions to add candidates, count total votes, and sort candidates based on votes.*/
+
+// User Login Function
 
 void userLogin() {
     if (num_candidates == 0) {
@@ -85,6 +113,7 @@ void userLogin() {
     char username[50];
     printf("Enter your username: ");
     scanf("%s", username);
+    // Check if user already exists
 
     for (int i = 0; i < num_users; i++) {
         if (strcmp(users[i].username, username) == 0) {
@@ -93,7 +122,7 @@ void userLogin() {
             return;
         }
     }
-
+// Create a new user
     if (num_users < maxUsers) {
         strcpy(users[num_users].username, username);
         users[num_users].votes_given = 0;
@@ -104,6 +133,12 @@ void userLogin() {
         printf("Maximum users reached. Cannot create a new user.\n");
     }
 }
+ /*Allows a user to log in.
+Checks if candidates exist, then prompts for username.
+If the user exists, allows the user to vote.
+If a new user, creates a new entry in the users array if the maximum limit is not reached.*/
+
+// Add Candidate Function
 
 void addCandidate() {
     if (num_candidates >= maxCandidates) {
@@ -120,6 +155,11 @@ void addCandidate() {
     candidates[num_candidates].votes = 0;
     num_candidates++;
 }
+/*Allows the admin to add a candidate.
+Checks if the maximum limit of candidates is reached.
+Asks for candidate name and sign, then adds the candidate to the candidates array.*/
+
+// Vote Candidate Function 
 
 void voteCandidate(User *user) {
     printf("\nCandidates List:\n");
@@ -139,10 +179,20 @@ void voteCandidate(User *user) {
         printf("Invalid choice. Please select a valid candidate.\n");
     }
 }
+/*Displays the list of candidates.
+Takes user input for the candidate they want to vote for.
+Records the vote and increments the candidate's votes count.
+Also increments the user's votes_given count.*/
+
+// View Total Votes Function
 
 void viewTotalVotes(User user) {
     printf("Total votes given by user %s: %d\n", user.username, user.votes_given);
 }
+
+/*Displays the total votes given by a specific user.*/
+
+// Count Total Votes Function
 
 void countTotalVotes() {
     int total_votes = 0;
@@ -151,7 +201,9 @@ void countTotalVotes() {
     }
     printf("Total votes counted: %d\n", total_votes);
 }
+/*Calculates and displays the total number of votes received by all candidates.*/
 
+// Sort Candidates Function
 // Algorithm Part
 // Bubble sort 
 
@@ -167,7 +219,6 @@ void sortCandidates() {
     }
 
 /*// Selection Sort
-
 void sortCandidates() {
     int maxIdx;
         Candidate temp;
