@@ -36,7 +36,6 @@ void voteCandidate(User *user);
 
 int main() {
     int choice;
-
     while (1) {
         printf("\n********** Voting System **********\n");
         printf("1. Admin Login\n");
@@ -63,13 +62,11 @@ int main() {
                 printf("Invalid choice. Please enter a valid option.\n");
         }
     }
-
     return 0;
 }
 
 void adminLogin() {
     int choice;
-
     while (1) {
         printf("\n********** Admin Menu **********\n");
         printf("1. Add Candidate\n");
@@ -99,13 +96,11 @@ void adminLogin() {
 
 void addCandidate() {
     char choice;
-
     do {
         if (num_candidates >= MaxCandidates) {
             printf("Maximum candidates reached. Cannot add more candidates.\n");
             return;
         }
-
         printf("Enter candidate name: ");
         scanf("%s", candidates[num_candidates].name);
 
@@ -122,16 +117,23 @@ void addCandidate() {
     } while (choice == '1');
 }
 
+
+
+
+
+
+
+
+
+
 void countTotalVotes() {
     // Sort candidates based on votes
     sortCandidates();
-
     printf("\n********** Total Votes **********\n");
     for (int i = 0; i < num_candidates; i++) {
         printf("%s received %d votes.\n", candidates[i].name, candidates[i].votes);
     }
 }
-
 void totalCandidates() {
     printf("\n********** Total Candidates **********\n");
     for (int i = 0; i < num_candidates; i++) {
@@ -152,6 +154,11 @@ void sortCandidates() {
     }
 }
 
+
+
+
+
+
 void userLogin() {
     char username[MaxNameLength];
     char password[MaxNameLength];
@@ -168,16 +175,23 @@ void userLogin() {
             return;
         }
     }
-
     printf("Invalid username or password. Please try again.\n");
 }
+
+
+
+
+
+
+
+
 
 void userSignup() {
     if (num_users >= MaxUser) {
         printf("Maximum users reached. Cannot create a new user.\n");
         return;
     }
-
+    
     printf("Enter your username: ");
     scanf("%s", users[num_users].username);
     printf("Enter your password: ");
@@ -189,12 +203,19 @@ void userSignup() {
     printf("User created successfully. Please login.\n");
 }
 
+
+
+
+
+
+
+
+
 void voteCandidate(User *user) {
     printf("\n********** Candidates List **********\n");
     for (int i = 0; i < num_candidates; i++) {
         printf("%d. %s (%s)\n", i + 1, candidates[i].name, candidates[i].sign);
     }
-
     int choice;
     printf("Enter the number of the candidate you want to vote for: ");
     scanf("%d", &choice);
