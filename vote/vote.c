@@ -1,3 +1,4 @@
+// Part 1 Supti 
 #include <stdio.h>
 #include <stdlib.h> 
 #include <string.h> 
@@ -131,7 +132,7 @@ void addCandidate() {
 
 
 
-
+// Line 135 - 168 everyone (Everyone need to know the bubble sort algorithm for sorting candidates based on vote)
 void countTotalVotes() {
     // Sort candidates based on votes in descending order
     sortCandidates();
@@ -171,6 +172,12 @@ void sortCandidates() {
 
 
 
+
+
+
+
+
+// part 2 = Tanu
 void userLogin() {
     char username[MaxNameLength];
     char password[MaxNameLength];
@@ -204,7 +211,7 @@ void userLogin() {
 
 
 
-
+// Part 3 = Dipa
 void userSignup() {
     // Check if the maximum number of users has been reached
     if (num_users >= MaxUser) {
@@ -235,7 +242,7 @@ void userSignup() {
 
 
 
-
+// Part 4 = Aman
 void voteCandidate(User *user) {
     printf("\n********** Candidates List **********\n");
     // Iterate through the list of candidates and print their details
